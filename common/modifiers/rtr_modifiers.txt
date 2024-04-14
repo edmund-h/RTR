@@ -1,0 +1,94 @@
+﻿#############################
+# Tang Assistance Modifiers #
+#############################
+
+
+## Administrative ##
+rtr_tang_assistance_administrative_high = { 
+	icon = stewardship_positive
+	supply_duration = 0.2
+	build_gold_cost = -0.2
+	vassal_tax_mult = 0.3
+}
+
+rtr_tang_assistance_administrative_med = { 
+	icon = stewardship_positive
+	build_gold_cost = -0.2
+	vassal_tax_mult = 0.3
+}
+
+rtr_tang_assistance_administrative_low = { 
+	icon = stewardship_positive
+	build_gold_cost = -0.1
+	vassal_tax_mult = 0.3
+}
+
+## Military ##
+rtr_tang_assistance_military_high = { 
+	icon = martial_positive
+	men_at_arms_maintenance = -0.05
+	knight_effectiveness_mult = 0.1
+	vassal_levy_contribution_mult = 0.1
+}
+
+rtr_tang_assistance_military_med = { 
+	icon = martial_positive
+	men_at_arms_maintenance = -0.05
+	knight_effectiveness_mult = 0.1
+	vassal_levy_contribution_mult = 0.1
+}
+
+rtr_tang_assistance_military_low = { 
+	icon = martial_positive
+	men_at_arms_maintenance = -0.05
+	knight_effectiveness_mult = 0.1
+	vassal_levy_contribution_mult = 0.1
+}
+
+## Political ##
+rtr_tang_assistance_political_high = { 
+	icon = diplomacy_positive
+	legitimacy_gain_mult = 0.1
+	powerful_vassal_opinion = 20
+	monthly_county_control_change_factor = 0.1
+}
+
+rtr_tang_assistance_political_med = { 
+	icon = diplomacy_positive
+	legitimacy_gain_mult = 0.1
+	powerful_vassal_opinion = 10
+	monthly_county_control_change_factor = 0.1
+}
+
+rtr_tang_assistance_political_low = { 
+	icon = diplomacy_positive
+	legitimacy_gain_mult = 0.05
+	powerful_vassal_opinion = 10
+	monthly_county_control_change_factor = 0.05
+}
+
+## Scholarly
+rtr_tang_assistance_scholarly_high = { 
+	icon = learning_positive
+	cultural_head_fascination_mult = 0.2
+	development_growth_factor = 0.2
+	monthly_lifestyle_xp_gain_mult = 0.05
+}
+
+rtr_tang_assistance_scholarly_med = { 
+	icon = learning_positive
+	cultural_head_fascination_mult = 0.2
+	development_growth_factor = 0.2
+}
+
+rtr_tang_assistance_scholarly_low = { 
+	icon = learning_positive
+	cultural_head_fascination_mult = 0.2
+	development_growth_factor = 0.1
+}
+
+## Other
+rtr_delinquent_tang_tributary = { 
+	icon = diplomacy_negative
+	vassal_opinion = -50
+}
