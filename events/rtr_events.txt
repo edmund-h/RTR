@@ -206,6 +206,7 @@ rtr_events.1501 = {
 			value = high_skill_rating 
 			60 = { 
 				modifier = {
+					exists = var:times_endorsed_tang
 					add = { 
 						value = var:times_endorsed_tang 
 						multiply = -6

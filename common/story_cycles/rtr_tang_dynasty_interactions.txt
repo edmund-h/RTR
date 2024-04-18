@@ -77,8 +77,7 @@
 							story_owner = { 
 								trigger_event =  { 
 									id = rtr_events.1501
-									#days = { 15 45 }
-									days = 2
+									days = { 15 45 }
 								}
 							}
 						}
@@ -95,5 +94,19 @@
 				}
 			}
 		}	
+	}
+
+	effect_group = {
+		years = 1
+		trigger = { 
+			story_owner = { 
+				highest_held_title_tier < tier_kingdom
+			}
+		}
+		triggered_effect = {
+			effect = { 
+				end_story = yes
+			}
+		}
 	}
 }
