@@ -1,1 +1,371 @@
-﻿
+﻿namespace = rtr_events
+
+##########################
+## Miscellaneuos Events ##
+##      0000-0999       ##
+##########################
+
+
+##########################
+##      Zhao Events     ##
+##       1000-1999      ##
+##########################
+
+# Zhao Intro
+rtr_events.1001 = { 
+	type = character_event
+	title = rtr_events.1001.t
+	desc = rtr_events.1001.desc
+	theme = crown
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	
+	trigger = { 
+		is_independent_ruler = yes
+		culture = culture:han
+		faith = faith:zhengyi
+	}
+
+	immediate = { 
+		add_legitimacy = rtr_medium_legitimacy_gain_value
+		add_character_modifier = {
+			modifier = rtr_tang_assistance_military_high
+		}
+	}
+
+	option = { 
+		name = rtr_events.1001.opt.ok
+		# start story cycle for Zhao character
+		hidden_effect = {
+			create_story = story_rtr_tang_dynasty_interactions
+		}
+	}
+}
+
+# Zhao Tribute
+rtr_events.1101 = { 
+	type = character_event
+	title = rtr_events.1101.t
+	desc = { 
+		desc = rtr_events.1101.desc.opening
+		first_valid = { 
+			triggered_desc = {
+				trigger = { scope:story = { var:tang_dynasty_countdown = 3 } }
+				desc = rtr_events.1101.desc.quality_high
+			}
+			triggered_desc = {
+				trigger = { scope:story = { var:tang_dynasty_countdown = 2 } }
+				desc = rtr_events.1101.desc.quality_med
+			}
+			triggered_desc = {
+				trigger = { scope:story = { var:tang_dynasty_countdown = 1 } }
+				desc = rtr_events.1101.desc.quality_low
+			}
+		}
+	}
+	theme = court
+	left_portrait = {
+		character = root
+		animation = chancellor
+	}
+	
+	trigger = { 
+		is_independent_ruler = yes
+		# has the Tang dynasty interaction story cycle
+	}
+
+	# Administrative support
+	option = { 
+		trigger = { gold >= 100 }
+		name = rtr_events.1101.opt.admin
+		remove_long_term_gold = 100
+		rtr_tang_tribute_reward_effect = { type = administrative }
+		ai_chance = { base = 1 }
+	}
+
+	# Military support
+	option = { 
+		trigger = { gold >= 100 }
+		name = rtr_events.1101.opt.mil
+		remove_long_term_gold = 100
+		rtr_tang_tribute_reward_effect = { type = military }
+		ai_chance = { base = 100 }
+	}
+
+	# Political support
+	option = { 
+		trigger = { gold >= 100 }
+		name = rtr_events.1101.opt.pol
+		remove_long_term_gold = 100
+		rtr_tang_tribute_reward_effect = { type = political }
+		ai_chance = { base = 1 }
+	}
+
+	# Scholarly support
+	option = { 
+		trigger = { gold >= 100 }
+		name = rtr_events.1101.opt.schol
+		remove_long_term_gold = 100
+		rtr_tang_tribute_reward_effect = { type = scholarly }
+		ai_chance = { base = 1 }
+	}
+
+	# pay half 
+	option = { 
+		trigger = { 
+			gold < 100
+			gold > 50 # cant go into debt to pay tang
+		}
+		name = rtr_events.1101.opt.half
+		remove_short_term_gold = 50
+		add_legitimacy = rtr_small_legitimacy_loss_value
+		add_character_modifier = {
+			modifier = rtr_delinquent_tang_tributary
+			years = 3
+		}
+	}
+
+	# refuse to pay
+	option = { 
+		name = rtr_events.1101.opt.refuse
+		add_legitimacy = rtr_large_legitimacy_loss_value
+		add_character_modifier = {
+			modifier = rtr_delinquent_tang_tributary
+			years = 3
+		}
+		hidden_effect = {
+			scope:story = {
+				set_variable = { 
+					name = stopped_paying_tribute
+					value = yes
+				}
+			}
+		}
+		ai_chance = { 
+			base = 1
+			modifier = { 
+				scope:story.var:tang_dynasty_countdown < 2
+				add = 100
+			}
+			ai_value_modifier = {
+				ai_boldness = 5
+			}
+			modifier = { 
+				gold < 100
+				factor = 100
+			}
+		}
+	}
+} 
+
+# No support from Tang Dynasty event
+rtr_events.1501 = { 
+	type = character_event
+	title = rtr_events.1501.t
+	desc = {
+			first_valid = {
+				triggered_desc = {
+					trigger = { scope:story = { var:countdown_event_cycle = 1 } }
+					desc = rtr_events.1501.desc.first
+				} 
+				desc = rtr_events.1501.desc.subsequent
+			}
+		}
+	theme = court
+	left_portrait = {
+		character = root
+		animation = worried
+	}
+
+	immediate = {
+		add_legitimacy = minor_legitimacy_loss
+	}
+
+	# damage control / encourage faith in the regime
+	option = { 
+		name =  rtr_events.1501.opt.pro
+		hidden_effect = {
+			if = { 
+				limit = { exists = var:times_endorsed_tang }
+				change_variable = { 
+					name = times_endorsed_tang
+					add = 1
+				}
+			} 
+			else = { 
+				set_variable = { 
+					name = times_endorsed_tang
+					value = 1
+				}
+			}
+		}
+		duel = { 
+			skill = diplomacy
+			value = high_skill_rating 
+			60 = { 
+				modifier = {
+					add = { 
+						value = var:times_endorsed_tang 
+						multiply = -6
+					}
+				}
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3
+					min = -29
+				}
+				send_interface_toast = {
+					title = rtr_events.1501.insincere_endorsement
+					add_character_modifier = {
+						modifier = vassal_distrust_modifier
+						years = 3
+					}
+				}
+				add_legitimacy = rtr_small_legitimacy_gain_value
+			}
+			12 = { 
+				send_interface_toast = {
+					title = rtr_events.1501.inspired_loyalty
+					add_character_modifier = { 
+						modifier = loyal_attitudes_modifier
+						years = 3
+					}
+				}
+				add_legitimacy = rtr_medium_legitimacy_gain_value
+			}
+		}
+		ai_chance = { 
+			base = 5
+		}
+	}
+
+	# take advantage of this opportunity
+	option = { 
+		name =  rtr_events.1501.opt.anti
+		trigger = { 
+			OR = { 
+				has_diplomacy_lifestyle_trait_trigger = yes
+				has_trait = overseer
+				has_trait = administrator
+			}
+		}
+		hidden_effect = {
+			if = { 
+				limit = { exists = var:times_endorsed_self }
+				change_variable = { 
+					name = times_endorsed_self
+					add = 1
+				}
+			} 
+			else = { 
+				set_variable = { 
+					name = times_endorsed_self
+					value = 1
+				}
+			}
+		}
+		add_prestige = major_prestige_loss
+		add_legitimacy = rtr_medium_legitimacy_gain_value
+		ai_chance = { 
+			base = 0
+			modifier = { 
+				add = 100
+				prestige >= major_prestige_value
+			}
+		}
+	}
+
+	# hide your head in the sand
+	option = { 
+		name = rtr_events.1501.opt.passive
+		add_character_modifier = {
+			modifier = rtr_ignoring_distant_events
+			years = 3
+		}
+		ai_chance = { 
+			base = 100
+			modifier = { 
+				has_trait = lazy
+				add = 50
+			}
+		}
+	}
+}
+
+#Zhao Reaction to fall of Tang Dynasty
+rtr_events.1901 = { 
+	type = character_event
+	title = rtr_events.1901.t
+	desc = rtr_events.1901.desc
+	theme = court
+	left_portrait = {
+		character = root
+		animation = worried
+	}
+
+	# Time to proclaim myself emperor!
+	option = { 
+		name = rtr_events.1901.opt.historical
+		
+		rtr_tang_dynasty_end_effect = { choice = self }
+
+		hidden_effect = { 
+			scope:story = { end_story = yes }
+		}
+	}
+
+	# Now I am just one of ten kings...
+	option = { 
+		name = rtr_events.1901.opt.alternate
+		
+		rtr_tang_dynasty_end_effect = { choice = tang }
+
+		hidden_effect = { 
+			scope:story = { end_story = yes }
+		}
+	}
+}
+
+##########################
+##      Cao Events      ##
+##       2000-2999      ##
+##########################
+
+## Cao Events 
+
+# Cao Intro
+# rtr_events.2001 = { 
+
+# }
+
+# Cao Reaction to fall of Tang Dynasty
+# rtr_events.2101 = { 
+
+# }
+
+#########################
+##  Error Suppression  ##
+#########################
+
+rtr_events.9999 = { 
+	type = character_event
+	orphan = yes
+	hidden = yes
+
+	immediate = { 
+		add_character_modifier = {
+			modifier = rtr_self_support_ending_negative
+		}
+		add_character_modifier = {
+			modifier = rtr_self_support_ending_positive
+		}
+		add_character_modifier = {
+			modifier = rtr_tang_support_ending_negative
+		}
+		add_character_modifier = {
+			modifier = rtr_tang_support_ending_positive
+		}
+	}
+}

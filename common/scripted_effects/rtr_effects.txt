@@ -1,0 +1,106 @@
+﻿
+rtr_start_effect = { 
+	title:k_guiyi.holder = { 
+		if = { 
+			limit = { 
+				OR = { 
+					this = character:244004
+					AND = { 
+						faith = faith:zhengyi
+						culture = culture:han
+					}
+				}
+			}
+			trigger_event = {
+				id = rtr_events.1001
+				days = { 5 10 }
+			}
+		}
+	}
+}
+
+rtr_tang_tribute_reward_effect = { 
+	scope:story = {
+		switch = { 
+			trigger = var:tang_dynasty_countdown
+			3 = { 
+				ROOT = {
+					add_legitimacy = rtr_medium_legitimacy_gain_value
+					add_character_modifier = {
+						modifier = rtr_tang_assistance_$type$_high
+						years = 3
+					}
+				}
+			}
+			2 = { 
+				ROOT = { 
+					add_legitimacy = rtr_small_legitimacy_gain_value
+					add_character_modifier = {
+						modifier = rtr_tang_assistance_$type$_med
+						years = 3
+					}
+				}
+			}
+			1 = { 
+				ROOT = { 
+					add_legitimacy = rtr_small_legitimacy_gain_value
+					add_character_modifier = {
+						modifier = rtr_tang_assistance_$type$_low
+						years = 3
+					}
+				}
+			}
+		}
+	}
+}
+
+rtr_tang_dynasty_end_effect = { 
+	if = { 
+		limit = { exists = var:times_endorsed_$choice$ }
+		save_temporary_scope_value_as = {
+			name = choice_support_total
+			value = var:times_endorsed_$choice$
+		}
+		save_temporary_scope_value_as = {
+			name = support_success_threshold
+			value = { 
+				value = scope:story.var:countdown_event_cycle 
+				add = -1
+				if = { 
+					limit = { scope:story.var:stopped_paying_tribute = yes }
+					multiply = 1000
+				}
+			}
+		}
+		if = { 
+			limit = { 
+				scope:choice_support_total >= scope:support_success_threshold 
+				scope:story.var:stopped_paying_tribute = no
+			} 
+			add_character_modifier = {
+				modifier = rtr_$choice$_support_ending_positive
+			}
+		}
+		else = { 
+			add_character_modifier = {
+				modifier = rtr_$choice$_support_ending_negative
+			}
+		}
+	} 
+	else = { 
+		add_character_modifier = {
+			modifier = rtr_$choice$_support_ending_negative
+		}
+	}
+	
+	hidden_effect = {
+		if = { 
+			limit = { exists = var:times_endorsed_self }
+			remove_variable = times_endorsed_self
+		}
+		if = { 
+			limit = { exists = var:times_endorsed_tang }
+			remove_variable = times_endorsed_tang
+		}
+	}
+}

@@ -1,0 +1,99 @@
+﻿story_rtr_tang_dynasty_interactions = { 
+	on_setup = { 
+		set_variable = { 
+			name = tang_dynasty_countdown
+			value = 3
+		}
+		set_variable = { 
+			name = countdown_event_cycle
+			value = 0
+		}
+		set_variable = { 
+			name = stopped_paying_tribute
+			value = no
+		}
+	}
+
+	on_owner_death = { 
+		# go to their heir if the heir is of a chinese culture
+		if = {
+			limit = {
+				exists = story_owner.player_heir
+				story_owner.player_heir.culture = { has_cultural_pillar = heritage_chinese }
+			}
+			make_story_owner = story_owner.player_heir
+		}
+	}
+
+	on_end = { 
+		
+	}
+
+	effect_group = {
+		days = { 1085 1105 }
+		triggered_effect = { 
+			trigger = { always = yes } # happens once per cycle
+			effect = { 
+				random_list = { 
+					0 = { # tick down tang dynasty dissolution countdown
+						modifier = { # 33% of countdown tick chance at 3 cycles
+							add = 15
+							var:countdown_event_cycle > 2
+						}
+						modifier = { # 75 of countdown tick chance at 4 cycles
+							add = 115
+							var:countdown_event_cycle > 3
+						}
+						if = { limit = { var:tang_dynasty_countdown > 0 }
+							change_variable = { # decrement countdown
+								name = tang_dynasty_countdown
+								add = -1
+							}
+							change_variable = { # reset current countdown cycles
+								name = countdown_event_cycle
+								multiply = 0
+							}
+						}
+						else_if = { limit = { var:tang_dynasty_countdown = 0 } 
+							story_owner = { 
+								trigger_event =  rtr_events.1901 # final cycle, will finish stage 0 and end the story
+							}
+						}
+					}
+					30 = { #tick up event cycle count
+						modifier = { # 100% of countdown tick chance at 5 cycles
+							add = -30
+							var:countdown_event_cycle > 4
+						}
+						change_variable = { # add to current coundown cycles
+							name = countdown_event_cycle
+							add = 1
+						}
+						if = { 
+							limit = { 
+								var:tang_dynasty_countdown = 0  # this will not happen for the final cycle
+								var:stopped_paying_tribute = no
+							}
+							story_owner = { 
+								trigger_event =  { 
+									id = rtr_events.1501
+									#days = { 15 45 }
+									days = 2
+								}
+							}
+						}
+					}
+				}
+				if = { 
+					limit = { 
+						var:tang_dynasty_countdown > 0 
+						var:stopped_paying_tribute = no
+					} # this check will happen for every cycle
+					story_owner = { 
+						trigger_event = rtr_events.1101
+					}
+				}
+			}
+		}	
+	}
+}

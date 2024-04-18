@@ -1,0 +1,25 @@
+﻿
+l_english: 
+ 
+ ## Tang Assistance Modifiers
+ rtr_tang_assistance_administrative_high: "Tang Dynasty Administrative Assistance (Normal)"
+ rtr_tang_assistance_administrative_med: "Tang Dynasty Administrative Assistance (Decreased)"
+ rtr_tang_assistance_administrative_low: "Tang Dynasty Administrative Assistance (Paltry)"
+ rtr_tang_assistance_military_high: "Tang Dynasty Military Assistance (Normal)"
+ rtr_tang_assistance_military_med: "Tang Dynasty Military Assistance (Decreased)"
+ rtr_tang_assistance_military_low: "Tang Dynasty Military Assistance (Paltry)"
+ rtr_tang_assistance_political_high: "Tang Dynasty Political Assistance (Normal)"
+ rtr_tang_assistance_political_med: "Tang Dynasty Political Assistance (Decreased)"
+ rtr_tang_assistance_political_low: "Tang Dynasty Political Assistance (Paltry)"
+ rtr_tang_assistance_scholarly_high: "Tang Dynasty Scholarly Assistance (Normal)"
+ rtr_tang_assistance_scholarly_med: "Tang Dynasty Scholarly Assistance (Decreased)"
+ rtr_tang_assistance_scholarly_low: "Tang Dynasty Scholarly Assistance (Paltry)"
+ 
+ ## Tang Story Cycle End Modifiers
+ rtr_self_support_ending_positive: "Self-Proclamed Emperor"
+ rtr_tang_support_ending_positive: "One of Ten Kingdoms"
+ rtr_self_support_ending_negative: "Self-Proclamed Emperor"
+ rtr_tang_support_ending_negative: "One of Ten Kingdoms"
+
+ ## RTR Miscellaneous Modifiers
+ rtr_delinquent_tang_tributary: "Delinquent Tang Tributary"

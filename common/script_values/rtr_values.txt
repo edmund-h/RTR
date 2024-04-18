@@ -1,0 +1,8 @@
+﻿
+rtr_small_legitimacy_gain_value = 12
+rtr_medium_legitimacy_gain_value = 25
+rtr_large_legitimacy_gain_value = 50
+
+rtr_small_legitimacy_loss_value = { value = 0 subtract = 12 }
+rtr_medium_legitimacy_loss_value = { value = 0 subtract = 25 }
+rtr_large_legitimacy_loss_value = { value = 0 subtract = 50 }

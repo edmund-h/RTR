@@ -1,7 +1,7 @@
-﻿#############################
+﻿
+#############################
 # Tang Assistance Modifiers #
 #############################
-
 
 ## Administrative ##
 rtr_tang_assistance_administrative_high = { 
@@ -50,21 +50,21 @@ rtr_tang_assistance_political_high = {
 	icon = diplomacy_positive
 	legitimacy_gain_mult = 0.1
 	powerful_vassal_opinion = 20
-	monthly_county_control_change_factor = 0.1
+	monthly_county_control_growth_factor = 0.1
 }
 
 rtr_tang_assistance_political_med = { 
 	icon = diplomacy_positive
 	legitimacy_gain_mult = 0.1
 	powerful_vassal_opinion = 10
-	monthly_county_control_change_factor = 0.1
+	monthly_county_control_growth_factor = 0.1
 }
 
 rtr_tang_assistance_political_low = { 
 	icon = diplomacy_positive
 	legitimacy_gain_mult = 0.05
 	powerful_vassal_opinion = 10
-	monthly_county_control_change_factor = 0.05
+	monthly_county_control_growth_factor = 0.05
 }
 
 ## Scholarly
@@ -87,8 +87,57 @@ rtr_tang_assistance_scholarly_low = {
 	development_growth_factor = 0.1
 }
 
-## Other
+
+##################################
+# Tang Story Cycle End Modifiers #
+##################################
+
+# Positive
+rtr_self_support_ending_positive = { 
+	icon = prestige_positive
+	monthly_prestige_gain_mult = 0.1
+	monthly_court_grandeur_change_mult = 0.20
+	courtier_and_guest_opinion = 20
+	personal_scheme_power_add = 0.05
+}
+
+rtr_tang_support_ending_positive = { 
+	icon = prestige_positive
+	legitimacy_gain_mult = 0.15
+	monthly_county_control_growth_factor = 0.1
+	dread_decay_mult = -0.2
+}
+
+# Negative
+rtr_self_support_ending_negative = { 
+	icon = prestige_negative
+	vassal_opinion = -40
+	same_culture_opinion = -20
+	same_faith_opinion = -20
+	legitimacy_gain_mult = -0.15
+}
+
+rtr_tang_support_ending_negative = { 
+	icon = prestige_negative
+	monthly_prestige_gain_mult = -0.1
+	monthly_court_grandeur_change_mult = -0.20
+	courtier_and_guest_opinion = -20
+}
+
+
+###############################
+# RTR Miscellaneous Modifiers #
+###############################
+
 rtr_delinquent_tang_tributary = { 
 	icon = diplomacy_negative
 	vassal_opinion = -50
 }
+
+rtr_ignoring_distant_events = { 
+	icon = social_positive
+	stress_loss_mult = 0.05
+	stress_gain_mult = -0.05
+	courtier_and_guest_opinion = 20
+}
+

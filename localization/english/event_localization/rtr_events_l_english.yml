@@ -1,0 +1,36 @@
+﻿
+l_english: 
+ 
+ # 1001 - Tang Dynasty Intro
+ rtr_events.1001.t: "Tributary of the Tang Dynasty"
+ rtr_events.1001.desc: "The sun sets on the rolling hills of [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip], as a caravan disappears over the horizon to the east. From the balcony of [ROOT.Char.GetHerHis] favorite palace suite, [ROOT.Char.GetName] watches it disappear filled with the Kingdom's hard-won gold.\n\nIt is a great honor, bestowed via the mandate of heaven, to be a [ROOT.Char.GetTitleTierName] recognized by the Emperor of China. The military advisors provided by the Emperor this year are also well worth the cost, one of several possible kinds of assistance given to loyal subjects of the Empire. To this end, it is imperative that we are able to make our tribute payment of 100 gold pieces every three years.\n\nHowever, there are rumblings of change on the horizon. Bureacratic maneuverings, levies raised in secret, intrigue in the imperial court. Upon the emissary's return in three years' time, we shall see where the Empire stands, and be assured once more of our position."
+ rtr_events.1001.opt.ok: "#italic Wú huáng wànsuì, wànsuì, wànwànsuì!#!"
+ 
+ # 1101 - Tang Dynasty Tribute
+ rtr_events.1101.t: "Tang Dynasty: Triennial Tribute"
+ rtr_events.1101.desc.opening: "Three years have come and gone, and the representative of the Emperor has arrived once again to collect tribute.\n\n"
+ rtr_events.1101.desc.quality_high: ""The Emperor is prepared to provide you his full support," the messenger says, "provided you are able to provide the full compliment of tribute that you owe. Which type of assistance would you prefer His Divine Majesty to provide?""
+ rtr_events.1101.desc.quality_med: ""The Emperor's attention is divided, but is still prepared to grant you significant resources," the messenger says, "provided you are able to provide the full compliment of tribute that you owe. Which type of assistance would you prefer His Divine Majesty to provide?""
+ rtr_events.1101.desc.quality_low: ""The Emperor's resources are limited this year," the messenger says. A murmur spreads across the court, as such an admission of weakness is rare and therefore surely an understatement. [ROOT.Char.GetCapitalLocation.GetTitle.GetNameNoTierNoTooltip] raises [ROOT.Char.GetHerHis] to silence the unsettled courtiers and the messenger continues. "Should you provide the full compliment of tribute that you owe, we are prepared to give what assistance we can.""
+ rtr_events.1101.opt.admin: "A cadre of trained bureaucrats."
+ rtr_events.1101.opt.mil: "Perhaps a few of the emperor's elite officers?"
+ rtr_events.1101.opt.pol: "Sealed letters and marks from the Emperor for my use."
+ rtr_events.1101.opt.schol: "Some of the fine scholars from the Emperor's court."
+ rtr_events.1101.opt.half: "I am experiencing hardship and can only pay half."
+ rtr_events.1101.opt.refuse: "Enough! I will no longer make these onerous payments!"
+
+# 1501 - Messenger no longer arriving
+ rtr_events.1501.t: "Tang Dynasty: A Weighted Absence"
+ rtr_events.1501.desc.first: "Three years have passed and the official bureaucratic messenger from the Emperor has failed to appear. For weeks, rumors have abounded in the court about natural disasters, scattered rebellions, and even a takeover in Chang'an. Still, despite all these things, it is shocking that no one has arrived. After all, some bureaucracy must exist and the gold trickling in through the important trade routes we control should be valuable to someone. If things really are that bad, we have to begin thinkng about the survival of our own kingdom here in the furthest Western regions of the empire.\n\nOn the one hand, if I continue supporting the current regime in Chang'an. Although it may be unwise to tie my boat to this sinking ship, supporting the regime could trace a direct line of legitimacy to myself.\n\nOn the other hand, I can begin the process of severing ties to the Empire such that when the time is right I can have a basis to declare my own independence."
+ rtr_events.1501.desc.subsequent: "Another three years have passed and the official bureaucratic messenger from the Emperor has failed to appear. For weeks, rumors have abounded in the court about natural disasters, scattered rebellions, and even a takeover in Chang'an. The continued absence of official contact with our Emperor is a sign that we must thinkng about the survival of our own kingdom here in the furthest Western regions of the empire.\n\nOn the one hand, if I continue supporting the current regime in Chang'an. Although it may be unwise to tie my boat to this sinking ship, supporting the regime could trace a direct line of legitimacy to myself.\n\nOn the other hand, I can begin the process of severing ties to the Empire such that when the time is right I can have a basis to declare my own independence."
+ rtr_events.1501.opt.pro: "Until we know otherwise, we still serve under the Mandate of Heaven."
+ rtr_events.1501.opt.anti: "The Guiyi Circuit must look after its own affairs now!"
+ rtr_events.1501.opt.passive: "Far-off events do not concern us."
+ rtr_events.1501.insincere_endorsement: "Your condifence comes off as insincere."
+ rtr_events.1501.inspired_loyalty: "Your confidence inspires loyalty"
+
+ #1901 - End of Tang Dynasty
+ rtr_events.1901.t: "The Fall of the Tang Dynasty"
+ rtr_events.1901.desc: "A messenger arrives from the east. Then another. Then another. At first, the subject is dire news from the capitol, Chang'an, where the emperor has been confirmed to be imprisoned. Then, the news was delivered of his execution at the hands of one of his generals. Following this, messengers have been arriving from each region, one by one refusing to recognize this new self-declared emperor and asking for sovereign recognition by my court. The generalissimo himself has also asked for my support and tribute, but it was obvious that he is in no position to offer anything in return or give any punishment for refusal.\n\nNo legitimate successors remain to take the place of the emperor. The Mandate of Heaven has been withdrawn. The Tang Dynasty is no more."
+ rtr_events.1901.opt.historical: "The Guiyi Empire begins this day!"
+ rtr_events.1901.opt.alternate: "We are now just one of Ten Kingdoms."
