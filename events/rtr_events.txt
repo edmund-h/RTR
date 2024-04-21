@@ -76,38 +76,48 @@ rtr_events.1101 = {
 		# has the Tang dynasty interaction story cycle
 	}
 
+	immediate = {
+		save_scope_value_as = {
+			name = half_payment
+			value = { 
+				value = medium_gold_value
+				divide = 2
+			}
+		}
+	}
+
 	# Administrative support
 	option = { 
-		trigger = { gold >= 100 }
+		trigger = { gold >= medium_gold_value }
 		name = rtr_events.1101.opt.admin
-		remove_long_term_gold = 100
+		remove_long_term_gold = medium_gold_value
 		rtr_tang_tribute_reward_effect = { type = administrative }
 		ai_chance = { base = 1 }
 	}
 
 	# Military support
 	option = { 
-		trigger = { gold >= 100 }
+		trigger = { gold >= medium_gold_value }
 		name = rtr_events.1101.opt.mil
-		remove_long_term_gold = 100
+		remove_long_term_gold = medium_gold_value
 		rtr_tang_tribute_reward_effect = { type = military }
 		ai_chance = { base = 100 }
 	}
 
 	# Political support
 	option = { 
-		trigger = { gold >= 100 }
+		trigger = { gold >= medium_gold_value }
 		name = rtr_events.1101.opt.pol
-		remove_long_term_gold = 100
+		remove_long_term_gold = medium_gold_value
 		rtr_tang_tribute_reward_effect = { type = political }
 		ai_chance = { base = 1 }
 	}
 
 	# Scholarly support
 	option = { 
-		trigger = { gold >= 100 }
+		trigger = { gold >= medium_gold_value }
 		name = rtr_events.1101.opt.schol
-		remove_long_term_gold = 100
+		remove_long_term_gold = medium_gold_value
 		rtr_tang_tribute_reward_effect = { type = scholarly }
 		ai_chance = { base = 1 }
 	}
@@ -115,11 +125,11 @@ rtr_events.1101 = {
 	# pay half 
 	option = { 
 		trigger = { 
-			gold < 100
-			gold > 50 # cant go into debt to pay tang
+			gold < medium_gold_value
+			gold > scope:half_payment # cant go into debt to pay tang
 		}
 		name = rtr_events.1101.opt.half
-		remove_short_term_gold = 50
+		remove_short_term_gold = scope:half_payment
 		add_legitimacy = rtr_small_legitimacy_loss_value
 		add_character_modifier = {
 			modifier = rtr_delinquent_tang_tributary
@@ -153,7 +163,7 @@ rtr_events.1101 = {
 				ai_boldness = 5
 			}
 			modifier = { 
-				gold < 100
+				gold < medium_gold_value
 				factor = 100
 			}
 		}
